@@ -26,17 +26,59 @@ class TreeNode:
         self.right = right
 ```
 
-## Recursion
+## Recursion递归
 [reading](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86.md)\
 [video](https://www.bilibili.com/video/BV1Wh411S7xt/?spm_id_from=pageDriver&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
 Recursion is realized by stack.\
+Think in the following 3 steps:
+- 确定递归函数的参数和返回值;
+- 确定终止条件
+- 确定单层递归的逻辑
+```python
+# 前序遍历-递归-LC144_二叉树的前序遍历
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        left = self.preorderTraversal(root.left)
+        right = self.preorderTraversal(root.right)
+
+        return  [root.val] + left +  right
+```
+```python
+# 中序遍历-递归-LC94_二叉树的中序遍历
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return []
+
+        left = self.inorderTraversal(root.left)
+        right = self.inorderTraversal(root.right)
+
+        return left + [root.val] + right
+```
+```python
+# 后序遍历-递归-LC145_二叉树的后序遍历
+class Solution:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        left = self.postorderTraversal(root.left)
+        right = self.postorderTraversal(root.right)
+
+        return left + right + [root.val]
+```
 
 
-
-
-
-
-## Iteration
+## Iteration迭代
 
 
 
